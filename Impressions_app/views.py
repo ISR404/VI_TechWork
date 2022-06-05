@@ -9,4 +9,7 @@ def main_page(request):
     context = {
         'active_user': active_user,
     }
-    return render(request, 'Impressions_app/main_page.html', context)
+    return render(request, 'Impressions_app/html-files/main_page.html', context)
+
+def global_map(request):
+    return render(request, 'Impressions_app/html-files/map.html')
