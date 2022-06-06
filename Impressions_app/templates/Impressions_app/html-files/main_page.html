@@ -2,6 +2,25 @@
 
 <body>
 <h1>Hi, You've created this project))</h1>
+{% if active_user.is_authenticated %}
+    <p>{{ active_user.first_name }}</p>
+    <a href="{% url 'logout' %}">Выйти из аккаунта</a>
+    {% if list_of_markers.count == 0 %}
+    <h1>У вас нет ни одного воспоминания</h1>
+    <p><a href="{% url 'create_marker' %}">Добавить воспоминание</a></p>
+    {% else %}
+        {% for marker in list_of_markers %}
+        <p>{{marker}}<p>
+        {% endfor %}
+        <p><a href="{% url 'create_marker' %}">Добавить воспоминание</a></p>
+    {% endif %}
+    <p></p>
+    <div style="width: 1000px; height: 700px">{{ map | safe }}</div>
+{% else %}
 <a href="/login/vk-oauth2">Войти с помощью ВК</a>
-<p>{{ active_user.first_name }}</p>
+{% endif %}
 </body>
+
+
+
+

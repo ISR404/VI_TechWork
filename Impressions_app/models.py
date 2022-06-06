@@ -19,3 +19,6 @@ class PlaceMarker(models.Model):
     x_map_pos = models.FloatField(name='x_position')
     y_map_pos = models.FloatField(name='y_position')
     description = models.TextField(max_length=4000)
+
+    def __str__(self):
+        return f'{self.user.username} {self.marker_name} marker'

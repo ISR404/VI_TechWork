@@ -1,0 +1,8 @@
+<form action="{% url 'create_marker' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Сохранить"> 
+</form>
+<div style="width: 1000px; height: 700px">
+    {{ map | safe }}
+</div>
