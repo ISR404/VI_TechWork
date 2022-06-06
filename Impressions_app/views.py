@@ -29,24 +29,6 @@ def main_page(request):
     return render(request, 'Impressions_app/html-files/main_page.html', context)
 
 
-def global_map(request):
-    active_user = request.user
-    map = folium.Map()
-    map.add_child(folium.LatLngPopup)
-    for marker in active_user.placemarker_set.all():
-        folium.Marker([marker.x_position, marker.y_position], popup=marker.description, tooltip=marker.marker_name).add_to(map)
-    map.save('Impressions_app/templates/Impressions_app/html-files/map.html')
-    context = {
-        'map': map
-    }
-    return render(request, 'Impressions_app/html-files/map.html', context)
-
-
-def test_output(request):
-    active_user = request.user
-    return HttpResponse(active_user.placemarker_set.all())
-
-
 def create_marker(request):
     if request.user.is_authenticated:
         if request.method == 'POST':

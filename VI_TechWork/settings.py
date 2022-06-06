@@ -56,7 +56,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'VI_TechWork.urls'
 
-TEMPLATE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "templates")
+TEMPLATE_DIR = os.path.join(os.path.dirname(
+    os.path.abspath(__file__)), "templates")
 
 TEMPLATES = [
     {
@@ -108,8 +109,10 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTHENTICATION_BACKENDS = (
-    'social_core.backends.vk.VKOAuth2',          # бекенд авторизации через ВКонтакте
-    'django.contrib.auth.backends.ModelBackend', # бекенд классической аутентификации, чтобы работала авторизация через обычный логин и пароль
+    # бекенд авторизации через ВКонтакте
+    'social_core.backends.vk.VKOAuth2',
+    # бекенд классической аутентификации, чтобы работала авторизация через обычный логин и пароль
+    'django.contrib.auth.backends.ModelBackend',
 )
 
 SOCIAL_AUTH_VK_OAUTH2_KEY = '8185705'
@@ -125,6 +128,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.associate_user',
     'social_core.pipeline.social_auth.load_extra_data',
     'social_core.pipeline.user.user_details',
+    'Impressions_app.pipeline.get_avatar',
 )
 
 LOGIN_REDIRECT_URL = '/'
