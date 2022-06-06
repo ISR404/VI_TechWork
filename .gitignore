@@ -1,2 +1,6 @@
 /VI_TechWork/__pycache__
 /Impressions_app/__pycache__
+/Impressions_app/migrations/__pycache__
+/.coverage
+/Impressions_app/tests/__pycache__
+/htmlcov

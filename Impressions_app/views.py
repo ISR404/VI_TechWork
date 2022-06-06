@@ -9,18 +9,20 @@ from django.contrib.auth import logout
 
 # Create your views here.
 
+
 def main_page(request):
     active_user = request.user
     if active_user.is_authenticated:
         list_of_markers = active_user.placemarker_set.all()
-        map = folium.Map()
+        map = folium.Map(control_scale=True)
         for marker in list_of_markers:
-            folium.Marker([marker.x_position, marker.y_position], popup=marker.description, tooltip=marker.marker_name).add_to(map)
+            folium.Marker([marker.y_position, marker.x_position],
+                          popup=marker.description, tooltip=marker.marker_name).add_to(map)
         map = map._repr_html_
         context = {
-        'active_user': active_user,
-        'list_of_markers': list_of_markers,
-        'map': map,
+            'active_user': active_user,
+            'list_of_markers': list_of_markers,
+            'map': map,
         }
     else:
         context = {
@@ -49,7 +51,7 @@ def create_marker(request):
             map = folium.Map()
             map.add_child(folium.LatLngPopup())
             map = map._repr_html_
-            return render(request, 'Impressions_app/html-files/new_marker_form.html', { 'form': form, 'map': map })
+            return render(request, 'Impressions_app/html-files/new_marker_form.html', {'form': form, 'map': map})
     else:
         return HttpResponse('Вы не авторизированы для совершения данного действия')
 

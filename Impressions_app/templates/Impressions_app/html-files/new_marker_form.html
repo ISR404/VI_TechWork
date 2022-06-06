@@ -1,14 +1,16 @@
-<h2>Instruction</h2>
-<p>Click on a place on a map, that you need</p>
-<p>Map will show you Latitude and Longtitude values</p>
-<p>Copy them and paste in form blanks</p>
-<p>Type a name of a place and it's description and after that push "Save" button</p>
+<body>
+    <h2>Instruction</h2>
+    <p>Click on a place on a map, that you need</p>
+    <p>Map will show you Latitude and Longtitude values</p>
+    <p>Copy them and paste in form blanks</p>
+    <p>Type a name of a place and it's description and after that push "Save" button</p>
 
-<form style="margin: 50px 0 10px 0;" action="{% url 'create_marker' %}" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Сохранить"> 
-</form>
-<div style="width: 1000px; height: 700px">
-    {{ map | safe }}
-</div>
+    <form style="margin: 50px 0 10px 0;" action="{% url 'create_marker' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Сохранить"> 
+    </form>
+    <div style="width: 1000px; height: 700px">
+        {{ map | safe }}
+    </div>
+</body>
