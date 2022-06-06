@@ -5,7 +5,7 @@
     <div align="right">
         <table>
             <tr><th>{{ active_user.first_name }}</th><th><img src="{{user.profile.avatar}}"></th></tr>
-            <tr><td><a href="{% url 'logout' %}">Выйти из аккаунта</a></td></tr>
+            <tr><td><a href="{% url 'logout' %}">Logout</a></td></tr>
         </table>
     </div>
 </header>
@@ -15,13 +15,13 @@
 {% if active_user.is_authenticated %}
 <div align="center">
     {% if list_of_markers.count == 0 %}
-    <h1>У вас нет ни одного воспоминания</h1>
-    <p><a href="{% url 'create_marker' %}">Добавить воспоминание</a></p>
+    <h1>You don't have any PlaceMarkers</h1>
+    <p><a href="{% url 'create_marker' %}">Add a PlaceMarker</a></p>
     {% else %}
         {% for marker in list_of_markers %}
         <p>{{marker.marker_name}}<p>
         {% endfor %}
-        <p><a href="{% url 'create_marker' %}">Добавить воспоминание</a></p>
+        <p><a href="{% url 'create_marker' %}">Add a PlaceMarker</a></p>
         <p></p>
         <div style="width: 1000px; height: 700px">{{ map | safe }}</div>
     {% endif %}
